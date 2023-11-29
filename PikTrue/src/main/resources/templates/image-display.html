@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PikTrue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+		
+
+       header {
+            background-color: #674ea7;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+			height: 70px; /* Adjust the height as needed */
+        }
+		
+		#search-button {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+		#logo {
+            width: 120px;
+            height: 80px;
+			object-fit: contain; /* Prevent squishing */
+            margin-right: 10px;
+        }
+
+        #search-bar {
+            width: 70%;
+            padding: 8px;
+            margin: 10px;
+        }
+
+       #logout-btn {
+            background-color: #000000;
+            color: #fff;
+            padding: 8px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .box {
+            width: calc(25% - 20px);
+            margin: 10px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                width: calc(50% - 20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="logo/Logo.jpg" alt="PicTrue Logo">
+        <input type="text" id="search-bar" placeholder="Search..." onkeypress="handleKeyPress(event)">
+		<button id="search-button" onclick="searchImages()">Go!</button>
+        <button id="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="container">
+        <!-- Sample Box 1 -->
+        <div class="box">
+            <img src="pictures/bahamas.jpg" alt="Sample Image">
+            <h2>Image Title 1</h2>
+            <p>Creator: John Doe</p>
+        </div>
+
+        <!-- Sample Box 2 -->
+        <div class="box">
+            <img src="pictures/carlsbad_caverns.jpg" alt="Sample Image">
+            <h2>Image Title 2</h2>
+            <p>Creator: Jane Doe</p>
+        </div>
+    </div>
+	
+ <script>
+    function logout() {
+        // Add your logout logic here
+        alert("Logout button clicked. Add your logout logic!");
+    }
+	
+	function searchImages() {
+		alert("add your search logic");
+		// if the text box is empty, let the user know they must input a word 
+		// retrieve the word
+		// kill whitespice characters so that there is just a string
+		//convert to all lowercase
+		//query database for the tag
+		//query database for the tag
+		// if foud display the images
+		// if not found, alert a message 
+	}
+</script>
+
+</body>
+
+</html>

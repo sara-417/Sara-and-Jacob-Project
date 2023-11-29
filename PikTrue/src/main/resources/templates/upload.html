@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PicTrue - Upload Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #674ea7;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+			height: 70px; /* Adjust the height as needed */
+        }
+
+        #logo {
+            width: 120px;
+            height: 80px;
+			object-fit: contain; /* Prevent squishing */
+            margin-right: 10px;
+        }
+
+        #logout-btn {
+            background-color: #000000;
+            color: #fff;
+            padding: 8px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #upload-form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #674ea7;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="logo/Logo.jpg" alt="PicTrue Logo">
+        <button id="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <div id="upload-form">
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+
+        <label for="image-name">Image Name:</label>
+        <input type="text" id="image-name" name="image-name" required>
+
+        <label for="tag1">Tag 1:</label>
+        <input type="text" id="tag1" name="tag1" oninput="validateTag(this)" required>
+
+        <label for="tag2">Tag 2:</label>
+        <input type="text" id="tag2" name="tag2" oninput="validateTag(this)" required>
+
+        <label for="tag3">Tag 3:</label>
+        <input type="text" id="tag3" name="tag3" oninput="validateTag(this)" required>
+
+        <button type="button" onclick="submitForm()">Upload Image</button>
+    </div>
+
+    <script>
+    function logout() {
+        // Add your logout logic here
+        alert("Logout button clicked. Add your logout logic!");
+    }
+
+    function validateTag(input) {
+        // Allow only letters in the tag input
+        input.value = input.value.replace(/[^a-zA-Z]/g, '').toLowerCase();
+    }
+
+	function submitForm() {
+        // Validate username and tags
+        const usernameRegex = /^[a-zA-Z0-9_]+$/;
+        const tagRegex = /^[a-zA-Z]+$/;
+
+        const username = document.getElementById('image-name').value;
+        const tag1 = document.getElementById('tag1').value;
+        const tag2 = document.getElementById('tag2').value;
+        const tag3 = document.getElementById('tag3').value;
+
+        // Check if any field is left blank
+        if (!username || !tag1 || !tag2 || !tag3) {
+            alert("All fields are required to be filled out.");
+            return;
+        }
+
+        if (!usernameRegex.test(username)) {
+            alert("Username can only contain letters (a-z), numbers, and underscores.");
+            return;
+        }
+
+        if (!tagRegex.test(tag1) || !tagRegex.test(tag2) || !tagRegex.test(tag3)) {
+            alert("Tags can only contain letters.");
+            return;
+        }
+
+        // Add your form submission logic here
+        alert("Form submitted successfully!");
+    }
+	
+	function checkPictureName() {
+		//add logic to front-end validate that the picture name does not already exist within the database
+	}
+</script>
+
+</body>
+
+</html>

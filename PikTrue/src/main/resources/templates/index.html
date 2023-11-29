@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PikTrue - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f2f2f2;
+        }
+
+         header {
+            background-color: #674ea7;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+			height: 70px; /* Adjust the height as needed */
+        }
+
+        #logo {
+            width: 120px;
+            height: 80px;
+			object-fit: contain; /* Prevent squishing */
+            margin-right: 10px;
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 50px auto;
+            max-width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #674ea7;
+            color: #fff;
+            padding: 10px;
+			margin-bottom: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+	<header>
+        <img id="logo" src="logo/Logo.jpg" alt="PicTrue Logo">
+    </header>
+
+    <div class="login-container">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+
+        <button type="button" onclick="login()">Login</button> 
+		
+		<button type="button" onclick="createAccount()">Create Account</button>
+    </div>
+
+    <script>
+        function login() {
+           if(<!-- username and password match the entry in the database -->) {
+				<!-- redirect to the home page -->
+		   }
+		   else() {
+				alert("Username or Password do not match.");
+		   }
+        }
+		
+		function createAccount() {
+			<!-- redirect to the create account page -->
+		}
+    </script>
+</body>
+
+</html>
