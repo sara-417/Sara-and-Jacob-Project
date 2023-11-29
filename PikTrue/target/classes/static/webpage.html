@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
+<!--enctype="multipart/form-data"-->
 		<title>Web Page</title>
 	</head>
 	<body>
 		<h1>Hello World!</h1>
-        <form action="/uploadPicture" method="post">
+        <form action="/uploadPicture" method="post" accept-charset="UTF-8">
 			
             <label for="username">Username:</label>
             <input type="text" id="username" name="username"><br>
@@ -18,6 +20,9 @@
             
             <label for="tags">Tags:</label>
             <input type="text" id="tags" name="tags"><br>
+            
+          <!--  <label for="image">Image:</label>
+            <input type="file" id="image" name="image"><br>-->
             
             <button type="submit">Upload Picture</button>
         </form>

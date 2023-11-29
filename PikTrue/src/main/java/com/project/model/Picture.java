@@ -18,7 +18,7 @@ private User user;
 
 @ManyToMany
 @JoinTable(
-	name = "tags",
+	name = "picture_tag",
 	joinColumns = @JoinColumn(name = "picture_id"),
 	inverseJoinColumns = @JoinColumn(name = "tag_id")
 		)
@@ -55,6 +55,14 @@ public User getUser() {
 //might need to look at this again later
 public void setUser(User user) {
 	this.user = user;
+}
+
+public void setTags(List<Tag> tags) {
+    this.tags = tags;
+}
+
+public List<Tag> getTags() {
+    return tags;
 }
 
 }
