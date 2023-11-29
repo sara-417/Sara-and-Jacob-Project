@@ -8,13 +8,13 @@ import javax.persistence.*;
 public class Picture {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer id;
+private Integer picture_id;
 private String title;
 private String description;
 
 @ManyToOne
-@JoinColumn(name = "id")
-private User username;
+@JoinColumn(name = "user_id")
+private User user;
 
 @ManyToMany
 @JoinTable(
@@ -26,11 +26,11 @@ private User username;
 	private List<Tag> tags;
 
 public Integer getId() {
-	return id;
+	return picture_id;
 }
 
 public void setId(Integer id) {
-	this.id = id;
+	this.picture_id = id;
 }
 
 public String getTitle() {
@@ -50,11 +50,11 @@ public void setDescription(String description) {
 }
 
 public User getUser() {
-	return username;
+	return user;
 }
 //might need to look at this again later
 public void setUser(User user) {
-	this.username = user;
+	this.user = user;
 }
 
 }

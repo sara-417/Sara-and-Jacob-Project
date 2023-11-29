@@ -1,6 +1,9 @@
 package com.project.controller;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +12,7 @@ import com.project.mapper.PictureRepository;
 import com.project.mapper.TagRepository;
 import com.project.mapper.UserRepository;
 import com.project.model.Picture;
+import com.project.model.Tag;
 import com.project.model.User;
 
 @RestController
@@ -30,40 +34,55 @@ public class PictureController {
             @RequestParam("description") String description,
             @RequestParam("tags") String tags) {
 
-        // Create a new Picture object
         Picture picture = new Picture();
-        picture.setUser(username);
+        
+        User user = userRepository.findByUsername(username);
+        if(user == null) {
+        	return "Error! User not found!";
+        }
+        
+        picture.setUser(user);
         picture.setTitle(title);
         picture.setDescription(description);
 
-        // Split the tags string into individual tag names
         String[] tagNames = tags.split(",");
-
-        // Create a list to store the tags associated with the picture
+        
         List<Tag> pictureTags = new ArrayList<>();
 
-        // Iterate over the tag names and create tags or retrieve existing ones
+      /*  
         for (String tagName : tagNames) {
-            tagName = tagName.trim(); // Remove leading/trailing spaces
-            if (!tagName.isEmpty()) { // Skip empty tag names
-                Tag tag = tagRepository.findByName(tagName);
+            tagName = tagName.trim();
+            if (!tagName.isEmpty()) {
+                Tag tag = searchByTag(tagName);
                 if (tag == null) {
-                    // If the tag doesn't exist, create a new one
                     tag = new Tag();
                     tag.setName(tagName);
                     tagRepository.save(tag);
                 }
                 pictureTags.add(tag);
+                
             }
         }
 
-        // Set the tags for the picture
         picture.setTags(pictureTags);
 
-        // Save the picture to the database
         pictureRepository.save(picture);
 
-        // Return a simple success message
         return "Picture uploaded successfully!";
+        */
+        return "okay sure";
+        }
+        
+        @GetMapping("/searchByTag")
+        public List<Picture> searchByTag(@RequestParam("tagName") String tagName) {
+            List<Picture> pictures = pictureRepository.searchByTag(tagName);
+            return pictures;
+            
+        //HTML code for Sara to implement this method
+        /*<form action="/searchByTag" method="get">
+    	<label for="tagName">Enter Tag Name:</label>
+    	<input type="text" id="tagName" name="tagName">
+    	<button type="submit">Search</button>
+		</form>*/
     }
 }

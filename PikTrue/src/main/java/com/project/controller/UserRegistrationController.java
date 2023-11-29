@@ -16,16 +16,13 @@ public class UserRegistrationController {
 
     @PostMapping("/register")
     public String registerUser(@RequestParam("username") String username, @RequestParam("password") String password) {
-        // Create a new User object
+    	
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         
-        // Save the user to the database
         userRepository.save(user);
         
-        // Return a simple success message
         return "User registered successfully!";
-
     }
 }
